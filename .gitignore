@@ -1,7 +1,23 @@
+# Environnements virtuels
+env/
+venv/
+.venv/
+
+# Fichiers de configuration locaux
+.env
+
+# Fichiers de cache Python
 __pycache__/
-   *.pyc
-  .env
-  .DS_Store
-  .vscode/
-  .idea/
-  env/
+*.py[cod]
+*$py.class
+
+# Fichiers de log
+*.log
+
+# Fichiers de l'IDE
+.vscode/
+.idea/
+
+# Autres fichiers système
+.DS_Store
+Thumbs.db
