@@ -1,5 +1,5 @@
 import logging
-from app.api.endpoints import apprenants, groupes, absences, uploads, importBulletin, codeRepertoire
+from app.api.endpoints import uploads, importBulletin
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -22,20 +22,9 @@ app.add_middleware(
 )
 
 # Inclusion des routes des différents modules
-app.include_router(apprenants.router, prefix="/apprenants", tags=["apprenants"])
-app.include_router(groupes.router, prefix="/groupes", tags=["groupes"])
-app.include_router(absences.router, prefix="/absences", tags=["absences"])
 app.include_router(uploads.router, prefix="", tags=["uploads"])  # Uploads sans préfixe
 app.include_router(importBulletin.router, prefix="/importBulletins", tags=["importBulletins"])
-app.include_router(codeRepertoire.router, prefix="/codeRepertoire", tags=["codeRepertoire"])
 
 azure_blob_service = AzureBlobService()  # Initialize the Azure Blob service
 
-@app.get("/generate-pdf")
-def generate_pdf(template_name: str):
-    try:
-        template_data = azure_blob_service.download_blob(template_name)
-        return {"message": "PDF generated successfully"}
-    except Exception as e:
-        logger.error(f"Error generating PDF: {str(e)}")
-        raise HTTPException(status_code=500, detail="An error occurred while generating the PDF")
+

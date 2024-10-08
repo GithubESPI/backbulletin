@@ -6,6 +6,8 @@ alembic==1.13.3
 annotated-types==0.6.0
 anyio==4.3.0
 attrs==18.2.0
+azure-core==1.31.0
+azure-storage-blob==12.23.1
 Babel==2.14.0
 blinker==1.7.0
 CacheControl==0.14.0
